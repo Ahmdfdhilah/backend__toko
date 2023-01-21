@@ -1,0 +1,128 @@
+.navbar {
+  background-color: rgb(10, 4, 22);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  position: sticky;
+  top: 0;
+  padding-top: 20px;
+  z-index: 20;
+}
+
+.nav__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  max-width: 1500px;
+}
+
+.nav__logo {
+  color: #fff;
+  align-items: center;
+  margin-left: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 2rem;
+  flex-grow: 1;
+  padding-bottom: 20px;
+}
+
+.nav__menu {
+  display: flex;
+  list-style: none;
+  text-align: center;
+  margin-right: 2rem;
+}
+
+.nav__links {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  height: 100%;
+  border-bottom: 3px solid transparent;
+}
+.fa__code {
+  margin-left: 1rem;
+}
+
+.nav__item {
+  line-height: 40px;
+  margin-right: 1rem;
+}
+
+.nav__item:after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 0;
+  background: transparent;
+  transition: width 0.7s ease, background-color 0.5s ease;
+}
+
+.nav__item:hover:after {
+  width: 100%;
+  background-color: #ef4444;
+}
+
+.nav__icon {
+  display: none;
+}
+
+@media screen and (max-width: 960px) {
+  .nav__menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-top: 1pxsolid #fff;
+    position: absolute;
+    top: 80px;
+    left: -110%;
+    opacity: 1;
+    transition: all 0.5s ease;
+  }
+
+  .nav__menu.active {
+    background: rgb(10, 4, 22);
+    left: 0px;
+    opacity: 1;
+    transition: all 0.5s ease;
+    z-index: 1;
+  }
+  .nav__item .active {
+    color: #ef4444;
+    border: none;
+  }
+  .nav__links {
+    padding: 1.5rem;
+    width: 100%;
+    display: table;
+  }
+
+  .nav__icon {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-100%, 60%);
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #efff;
+  }
+}
+
+.number__order {
+  position: relative;
+  z-index: 3;
+  color: white;
+  background-color: red;
+  width: 15px;
+  height: 25px;
+  text-align: center;
+  border-radius: 50%;
+  margin-top: -50px;
+  margin-left: 25px;
+  font-size: 10px;
+}
