@@ -1,11 +1,19 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import styles from "./styles.module.css";
-import {AiOutlineShoppingCart } from "react-icons/ai";
+import 'react-notifications/lib/notifications.css';
+
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import { BsCartFill } from "react-icons/bs";
+import { NotificationContainer, NotificationManager } from 'react-notifications';
 
 const Product = () => {
+  const initialStateTotal = JSON.parse(localStorage.getItem("totals"));
   const [dataResult, setDataResult] = useState([]);
+
+  const [number, setNumber] = useState(initialStateTotal ? initialStateTotal.total : 0)
   const basket = JSON.parse(localStorage.getItem("data")) || [];
 
   useEffect(() => {
@@ -19,24 +27,25 @@ const Product = () => {
         console.log(err);
       }
     }
-
     getData();
   }, []);
 
   function updates() {
-    const numbers = basket.map((x) => x.jumlah).reduce((x, y) => x + y, 0);
-    const sum = {
-      jumlah: numbers,
-    };
-    localStorage.setItem("jumlah", JSON.stringify(sum));
+    const sum = basket.map((x) => x.total).reduce((x, y) => x + y, 0);
+    setNumber(sum);
+    localStorage.setItem("totals", JSON.stringify({
+      total: sum
+    }));
+    NotificationManager.success('You have add this item to your cart', 'Success!');
   }
+
   return (
     <div className={styles.container}>
       {dataResult.map((x) => {
         return (
           <div className={styles.card}>
             <div className={styles.card__image}>
-              <img src={`/${x.img}`}/>
+              <img src={`/${x.img}`} />
             </div>
             <div className={styles.card__content}>
               <div className={styles.card__content__tag}>
@@ -54,7 +63,7 @@ const Product = () => {
               </p>
               <div className={styles.card__content__config}>
                 <div className={styles.price}>
-                  <span className={styles.price}>Rp {x.harga}</span>
+                  <span className={styles.price}>Rp {x.price}</span>
                   {/* <span className={styles.prev_price}>$350</span> */}
                 </div>
                 <div className={styles.colors}>
@@ -72,26 +81,35 @@ const Product = () => {
                     if (status === undefined) {
                       basket.push({
                         id: x.id,
-                        jumlah: 1,
-                        desc: x.desc,
+                        total: 1,
+                        description: x.description,
                         img: x.img,
                         name: x.name,
-                        harga: x.harga,
+                        price: x.price,
                       });
                     } else {
-                      status.jumlah += 1;
+                      status.total += 1;
                     }
                     localStorage.setItem("data", JSON.stringify(basket));
                     updates();
                   }}
                 >
-                  <AiOutlineShoppingCart/>Add to Cart
+                  <AiOutlineShoppingCart />Add to Cart
                 </button>
               </div>
             </div>
           </div>
         );
       })}
+      <div className={styles.cart__sticky}>
+        <div className={styles.cart__wrapper}>
+          <Link href="/cart" className={styles.cart__button}>
+            <BsCartFill color="white" size={40} />
+            <div className={styles.number__order}>{number}</div>
+          </Link>
+        </div>
+      </div>
+      <NotificationContainer />
     </div>
   );
 };

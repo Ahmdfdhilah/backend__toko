@@ -1,4 +1,8 @@
 .container{
+	display: flex;
+	flex-direction: column;
+}
+.basket__container{
   padding: 5vh;
   margin: 0;
   gap: 5vh;
@@ -113,4 +117,8 @@
 .card__content__action button:hover{
   transform: scale(1.05);
   transition: all 500ms ease;
+}
+
+.payment__container{
+	text-align: center;
 }

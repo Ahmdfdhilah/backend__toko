@@ -8,7 +8,7 @@ const db =  async (query, values) => {
         password: process.env.MYSQL_PASSWORD,
       });
     try{
-        const query = "SELECT * FROM `project-1`.item";
+        const query = "SELECT * FROM `project-1`.items";
         const values = [];
         const [data] = await connection.execute(query, values);
         return data;

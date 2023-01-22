@@ -121,3 +121,39 @@
   transform: scale(1.05);
   transition: all 500ms ease;
 }
+.cart__sticky{
+	position: fixed;
+    inset: 85% 0 0 95%;
+	z-index: 999;
+	display: grid;
+	place-items: center;
+}
+
+
+.cart__wrapper{
+	background-color: #232323;
+	height: 10vh;
+	width:10vh;
+	margin:  0 auto;
+	border-radius: 15px;
+	display: grid;
+	place-items: center;
+}
+.cart__button{
+	transform: translateY(-1.5vh);
+}
+.number__order {
+	position: relative;
+	z-index: 1000;
+	color: white;
+	background-color: red;
+	height: 18px;
+	width: 15px;
+	display: grid;
+	place-items: center;
+	text-align: center;
+	border-radius: 50%;
+	margin-top: -50px;
+	margin-left: 25px;
+	font-size: 10px;
+}
