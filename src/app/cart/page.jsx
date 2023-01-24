@@ -2,16 +2,16 @@
 import { BsFillTrashFill } from "react-icons/bs";
 import styles from "./styles.module.css";
 import { useEffect, useState } from "react";
-
+import { BsFillBagCheckFill } from "react-icons/bs";
 const Cart = () => {
 
   const [basket, setBasket] = useState(JSON.parse(localStorage.getItem("data")) || []);
   const [isCart, setIsCart] = useState(basket.length != 0 ? true : false);
   const [sum, setSum] = useState(basket.length != 0 ? basket.map((x) => x.total * x.price).reduce((x, y) => x + y, 0) : 0);
- 
+
   useEffect(() => {
     setIsCart(basket.length != 0 ? true : false);
-    setSum(basket.map((x) => x.total*x.price).reduce((x, y) => x + y, 0))
+    setSum(basket.map((x) => x.total * x.price).reduce((x, y) => x + y, 0))
   }
     , [basket])
 
@@ -53,9 +53,12 @@ const Cart = () => {
                       <span className={`${styles.color} ${styles.color3}`}></span>
                     </div>
                   </div>
+              
                   <div className={styles.card__content__action}>
-                    <button className={styles.cart} onClick={() => {
-                      const temp = basket.filter(y => y.id != x.id);
+                <div
+                  className={styles.cart}
+                  onClick={function () {
+                    const temp = basket.filter(y => y.id != x.id);
                       const sum = temp.map((x) => x.total).reduce((x, y) => x + y, 0);
 
                       localStorage.setItem('data', JSON.stringify(temp));
@@ -63,22 +66,53 @@ const Cart = () => {
                         total: sum
                       }));
                       setBasket(temp)
-                    }}>
-                      <BsFillTrashFill />
-                      Remove from Cart
-                    </button>
+                  }}
+                >
+                  <div className={styles.main__button}>
+                    <div className={styles.content__button}><BsFillTrashFill />Removed from Cart</div>
                   </div>
                 </div>
               </div>
+                </div>
+
+              </div>
             );
           })
-        }</div>
+        }
+        </div>
       }
       {
         isCart ? (
           <div className={styles.payment__container}>
             <div className={styles.payment__wrapper}>
-              <h1 className={styles.cart__total}>Sub total : {sum}</h1>
+              <div className={styles.payment__tables}>
+                <table style={{
+                  "border-collapse": "separate",
+                  "border-spacing": "1.4em 0"
+                }}>
+                  <tr>
+                    <th style={{ "padding-bottom": "7px" }}>Product</th>
+                    <th style={{ "padding-bottom": "7px" }}>Quantities</th>
+                    <th style={{ "padding-bottom": "7px" }}>Price</th>
+                  </tr>
+                  {
+                    basket.map((x) => {
+                      return (
+                        <tr>
+                          <td>{x.name}</td>
+                          <td>{x.total}</td>
+                          <td>{x.price}</td>
+                        </tr>
+                      )
+                    })
+                  }
+                </table>
+              </div>
+              <br />
+              <div className={styles.cart__total}>Sub total : {sum}</div>
+              
+                <button className={styles.cart__total__content} style={{ "background-color": "rgb(18, 217, 21)" }}><BsFillBagCheckFill />Checkout</button>
+            
             </div>
           </div>
         ) : (

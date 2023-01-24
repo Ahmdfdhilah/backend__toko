@@ -1,20 +1,24 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
-import styles from "./styles.module.css";
-import 'react-notifications/lib/notifications.css';
-
+import { useState, useEffect } from "react";
+import { useSpring, animated } from '@react-spring/web';
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BsCartFill } from "react-icons/bs";
 import { NotificationContainer, NotificationManager } from 'react-notifications';
+import useMeasure from 'react-use-measure';
+import styles from "./styles.module.css";
+import 'react-notifications/lib/notifications.css';
 
 const Product = () => {
   const initialStateTotal = JSON.parse(localStorage.getItem("totals"));
   const [dataResult, setDataResult] = useState([]);
-
   const [number, setNumber] = useState(initialStateTotal ? initialStateTotal.total : 0)
+  const [open, toggle] = useState()
+ 
+  const [ref, { width }] = useMeasure()
   const basket = JSON.parse(localStorage.getItem("data")) || [];
+  const props = useSpring({ width: open ? width : 0 })
 
   useEffect(() => {
     async function getData() {
@@ -44,8 +48,8 @@ const Product = () => {
       {dataResult.map((x) => {
         return (
           <div className={styles.card}>
-            <div className={styles.card__image}>
-              <img src={`/${x.img}`} />
+            <div className={styles.image__card}>
+               <img src={x.img} alt="" />
             </div>
             <div className={styles.card__content}>
               <div className={styles.card__content__tag}>
@@ -73,7 +77,7 @@ const Product = () => {
                 </div>
               </div>
               <div className={styles.card__content__action}>
-                <button
+                <div
                   className={styles.cart}
                   onClick={function () {
                     let status = basket.find((baskets) => baskets.id === x.id);
@@ -94,21 +98,33 @@ const Product = () => {
                     updates();
                   }}
                 >
-                  <AiOutlineShoppingCart />Add to Cart
-                </button>
+                  <div className={styles.main__button}>
+                    <div className={styles.content__button}><AiOutlineShoppingCart />Add to Cart</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         );
       })}
       <div className={styles.cart__sticky}>
-        <div className={styles.cart__wrapper}>
-          <Link href="/cart" className={styles.cart__button}>
+        <div div ref={ref} className={styles.main} onMouseOver={() => toggle(true)} onMouseOut={() => toggle(false)}>
+        <animated.div className={styles.fill} style={props} />
+        <animated.div className={styles.content}>
+        <Link href="/cart" className={styles.cart__button}>
             <BsCartFill color="white" size={40} />
             <div className={styles.number__order}>{number}</div>
           </Link>
+        </animated.div>
+         
+         
+         
         </div>
       </div>
+
+
+
+
       <NotificationContainer />
     </div>
   );

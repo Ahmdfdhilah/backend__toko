@@ -17,6 +17,8 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.7.1",
     "react-notifications": "^1.7.4",
+    "react-spring": "^9.6.1",
+    "react-use-measure": "^2.1.1",
     "uuidv4": "^6.2.13"
   },
   "devDependencies": {
