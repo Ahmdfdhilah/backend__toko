@@ -4,6 +4,13 @@
   box-sizing: border-box;
   text-decoration: none;
 }
+html,
+body,
+#root {
+  min-height: 100%;
+  width: 100%;
+  user-select: none;
+}
 /*footer*/
 .footer {
   background-color: rgb(10, 4, 22);

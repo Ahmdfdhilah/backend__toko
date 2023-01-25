@@ -1,5 +1,5 @@
 "use client"
-import './globals.css'
+import './globals.css';
 import Navbar from './Navbar/Navbar';
 import Footer from './Footer';
 export default function RootLayout({ children }) {

@@ -111,9 +111,21 @@
 	cursor: pointer;
 	border-radius: 5px;
 	border: 2px solid #272727;
+	background: #232323;
 	overflow: hidden;
 }
 
+.container__buttton {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	justify-content: center;
+  }
+.fill__button {
+	position: absolute;
+	inset: 0;
+	background:#fb923c;
+  }  
 .content__button {
 	position: absolute;
 	top: 0;
@@ -123,9 +135,8 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	color: #272727;
+	color: #fff;
 }
-
 
 .cart {
 	display: flex;
@@ -133,7 +144,7 @@
 	height: 100%;
 }
 
-.main {
+.main__button__cart {
 	height: 10vh;
 	width: 10vh;
 	cursor: pointer;
@@ -144,16 +155,16 @@
 	background-color: #232323;
 }
 
-.fill {
+.fill__button__cart {
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: #fb923c;
+	background: #fff;
 }
 
-.content {
+.content__button__cart {
 	transform: translateY(-1.5vh);
 	position: absolute;
 	top: 0;
@@ -167,7 +178,13 @@
 	color: #272727;
 }
 
+.cart__button {
+    color: #E9E9E9;
+}
 
+.cart__button:hover {
+    color: #232323
+}
 .cart__sticky {
 	position: fixed;
 	inset: 85% 0 0 92%;
@@ -177,8 +194,8 @@
 .number__order {
 	position: relative;
 	z-index: 1000;
-	color: white;
-	background-color: red;
+	color: white !important;
+	background-color: red !important;
 	height: 18px;
 	width: 15px;
 	display: grid;

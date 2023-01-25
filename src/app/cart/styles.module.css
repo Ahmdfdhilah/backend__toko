@@ -109,10 +109,22 @@
 	cursor: pointer;
 	border-radius: 5px;
 	border: 2px solid #272727;
+	background: #232323;
 	overflow: hidden;
+}
+
+.container__buttton {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	justify-content: center;
   }
-  
-  .content__button {
+.fill__button {
+	position: absolute;
+	inset: 0;
+	background:#ef4444;
+  }  
+.content__button {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -121,8 +133,8 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	color: #272727;
-  }
+	color: #fff;
+}
   
 
 .cart {
@@ -135,6 +147,7 @@
 	display: flex;
 	flex-direction: column;
 	padding: 50px;
+	text-align: center;
 	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.30);
 }
 
@@ -155,3 +168,86 @@
 	font-size: 1.3rem;
 	border-radius: 5px;
 }
+
+.main__button__co {
+	position: relative;
+	width: 200px;
+	height: 50px;
+	cursor: pointer;
+	border-radius: 5px;
+	border: 2px solid #272727;
+	background: #232323;
+	overflow: hidden;
+	margin: 0 auto;
+	margin-top: 2vw;
+}
+
+.fill__button__co {
+	position: absolute;
+	inset: 0;
+	background:rgb(18, 217, 21);
+  }  
+.content__button__co {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+}
+
+.fill__button__back {
+	position: absolute;
+	inset: 0;
+	background:#fff;
+  }  
+.content__button__back{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+}
+.content__button__back:hover{
+	color: #232323;
+}
+
+.text {
+	font-weight: 600;
+	font-size: 4em;
+	cursor: pointer;
+  }
+  
+  .container__empty {
+	display: flex;
+	flex-direction: column;
+	padding-bottom: 10vw;
+	overflow: hidden;
+	align-items: center;
+	height: 64vh;
+	justify-content: center;
+  }
+
+  .rocket {
+	position:fixed;
+	background: url(/images/rocket.png) no-repeat;
+	background-size: contain;
+	width: 90px;
+	height: 90px;
+	cursor: -webkit-grab;
+	will-change: transform;
+	user-select: none;
+	inset: 70% 0 0 90%;
+  }
+  
+  .rocket:active {
+	cursor: -webkit-grabbing;
+  }
+  
