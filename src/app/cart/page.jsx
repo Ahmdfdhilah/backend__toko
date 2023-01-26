@@ -57,7 +57,11 @@ const Cart = () => {
         <div className={styles.basket__container}>{
           basket.map((x, index) => {
             return (
-              <div className={styles.card}>
+              <div className={styles.card}
+                data-aos="fade-left"
+                data-aos-duration="1500"
+                data-aos-once="true"
+                data-aos-offset="200">
                 <div className={styles.card__image}>
                   <img src={`/${x.img}`} />
                 </div>
@@ -121,7 +125,12 @@ const Cart = () => {
       }
       {
         isCart ? (
-          <div className={styles.payment__container}>
+          <div
+            className={styles.payment__container}
+            data-aos="fade-up"
+            data-aos-duration="1500"
+            data-aos-once="true"
+            data-aos-offset="200">
             <div className={styles.cart__total}>Total : {sum}</div>
             <div className={styles.main__button__co} onMouseOver={() => setCheckoutButton(true)} onMouseOut={() => setCheckoutButton(false)}>
               <animated.div className={styles.fill__button__co} style={propCartButton} />
@@ -129,7 +138,12 @@ const Cart = () => {
             </div>
           </div>
         ) : (
-          <div className={styles.container__empty}>
+          <div 
+            className={styles.container__empty}
+            data-aos="fade-up"
+            data-aos-duration="1500"
+            data-aos-once="true"
+            data-aos-offset="200">
             <animated.div
               onClick={() => setEmptyTextAnimated(!emptyTextAnimated)}
               className={styles.text}

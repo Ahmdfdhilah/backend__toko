@@ -6,6 +6,9 @@ import { useSpring, animated, useSprings } from '@react-spring/web';
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BsCartFill } from "react-icons/bs";
 import styles from "./styles.module.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
+AOS.init();
 
 const Home = () => {
   const initialStateTotal = JSON.parse(localStorage.getItem("totals"));
@@ -14,7 +17,7 @@ const Home = () => {
   const [cart, setCart] = useState()
   const [activeIndex, setActiveIndex] = useState()
   const basket = JSON.parse(localStorage.getItem("data")) || [];
- 
+
   useEffect(() => {
     async function getData() {
       try {
@@ -46,7 +49,11 @@ const Home = () => {
     <div className={styles.container}>
       {dataResult.map((x, index) => {
         return (
-          <div className={styles.card}>
+          <div className={styles.card}
+            data-aos="fade-up"
+            data-aos-duration="1500"
+            data-aos-once="true"
+            data-aos-offset="200">
             <div className={styles.image__card}>
               <img src={x.img} alt="" />
             </div>
@@ -113,7 +120,7 @@ const Home = () => {
         <div div className={styles.main__button__cart}>
           <animated.div className={styles.fill__button__cart} style={propCartButton} />
           <animated.div className={styles.content__button__cart}>
-            <Link href="/cart" className={styles.cart__button}  onMouseOver={() => setCart(true)} onMouseOut={() => setCart(false)}>
+            <Link href="/cart" className={styles.cart__button} onMouseOver={() => setCart(true)} onMouseOut={() => setCart(false)}>
               <BsCartFill size={40} />
               <div className={styles.number__order}>{number}</div>
             </Link>

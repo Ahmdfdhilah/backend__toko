@@ -2,7 +2,10 @@
   "name": "next-fullstack",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://Ahmdfdhilah.github.io/backend__toko",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -10,6 +13,8 @@
   },
   "dependencies": {
     "@next/font": "13.1.2",
+    "aos": "^2.3.4",
+    "gh-pages": "^5.0.0",
     "mysql2": "^3.0.1",
     "next": "13.1.2",
     "react": "18.2.0",
