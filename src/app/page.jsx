@@ -5,9 +5,12 @@ import { useState, useEffect } from "react";
 import { useSpring, animated, useSprings } from '@react-spring/web';
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BsCartFill } from "react-icons/bs";
+import { NotificationManager, NotificationContainer } from "react-notifications";
 import styles from "./styles.module.css";
 import AOS from "aos";
+import 'react-notifications/lib/notifications.css';
 import "aos/dist/aos.css";
+
 AOS.init();
 
 const Home = () => {
@@ -103,6 +106,7 @@ const Home = () => {
                     }
                     localStorage.setItem("data", JSON.stringify(basket));
                     updates();
+                    NotificationManager.success("Success!","Success adding new items")
                   }}
                 ><div className={styles.container__button}>
                     <div className={styles.main__button} onMouseOver={() => setActiveIndex(index)} onMouseOut={() => setActiveIndex(-1)}>
@@ -114,6 +118,7 @@ const Home = () => {
               </div>
             </div>
           </div>
+         
         );
       })}
       <div className={styles.cart__sticky}>
@@ -127,7 +132,9 @@ const Home = () => {
           </animated.div>
         </div>
       </div>
+      <NotificationContainer/>
     </div>
+    
   );
 };
 
